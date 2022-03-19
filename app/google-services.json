@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "861173192465",
+    "project_id": "artg-7267f",
+    "storage_bucket": "artg-7267f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861173192465:android:de3f9c53fb1562db31deb0",
+        "android_client_info": {
+          "package_name": "com.example.artg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861173192465-u6i1tprbaqvos3bp22fjslpi6s68emot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu4f57dgWldyW0uSpc5vhf1ZDALidK5pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861173192465-u6i1tprbaqvos3bp22fjslpi6s68emot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

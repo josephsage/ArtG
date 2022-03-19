@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ARTG</string>
+    <string-array name="Usertype">
+        <item>Customer</item>
+        <item>Artist</item>
+    </string-array>
+    <string-array name="ArtType">
+        <item>Digital</item>
+        <item>Painting</item>
+        <item>Drawing</item>
+        <item>Photography</item>
+    </string-array>
+</resources>

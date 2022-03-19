@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
+    android:id="@+id/main_layout2"
+    >
+    <ImageView
+        android:src="@drawable/loco"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:id="@+id/REG_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        />
+
+
+    <EditText
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/REG_name"
+        android:drawablePadding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:inputType="text"
+        android:drawableStart="@drawable/ic_person"
+        android:textColor="@color/black"
+        android:textColorHint="#918B8B"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/REG_logo"
+        android:background="@drawable/custom_input"
+        android:hint="Name" />
+    <EditText
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/REG_email"
+        android:drawablePadding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:inputType="text"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_baseline_email"
+        android:textColor="@color/black"
+        android:textColorHint="#918B8B"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/REG_name"
+
+
+        android:hint="E-mail Address" />
+
+    <EditText
+        android:id="@+id/REG_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/REG_email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/custom_input"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawablePadding="12dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textColor="@color/black"
+
+        android:textColorHint="#918B8B" />
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/REG_password"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+
+        <CheckBox
+            android:id="@+id/Artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:gravity="center_vertical"
+            android:text="Register as Artist"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/Customer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="80dp"
+            android:text="Register as Customer"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/register_btn"
+        android:padding="17dp"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button"
+        android:textSize="18sp"
+        android:text="Create Account"
+        />
+
+
+
+
+</RelativeLayout>
