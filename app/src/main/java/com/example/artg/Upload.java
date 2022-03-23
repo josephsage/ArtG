@@ -2,6 +2,7 @@ package com.example.artg;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +21,10 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -46,6 +51,9 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
     private StorageReference productImageRef;
     private FirebaseFirestore fstore;
     private FirebaseAuth fAuth;
+    String downloadUrl;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,20 +138,40 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
         savecurrenttime = currentTime.format(calendar.getTime());
 
         productRandomKey = savecurrentdate+savecurrenttime;
-        StorageReference filepath = productImageRef.child(ImageUri.getLastPathSegment()+productRandomKey+"jpg");
-        final UploadTask uploadTask = filepath.putFile(ImageUri);
+
+        final StorageReference filepath = productImageRef.child(ImageUri.getLastPathSegment()+productRandomKey+"jpg");
+        UploadTask uploadTask = (UploadTask) filepath.putFile(ImageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                filepath.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        ImageUri = uri;
+                        userID = fAuth.getCurrentUser().getUid();
+                        DocumentReference documentReference = fstore.collection("Users").document(userID).collection("Uploads").document();
+                        Map<String, Object> user = new HashMap<>();
+                        user.put("Artist", Artist);
+                        user.put("Title",Title );
+                        user.put("Description",Description );
+                        user.put("Price",Price );
+                        user.put("ArtImage",ImageUri.toString());
+                        documentReference.set(user, SetOptions.merge());
+                    }
+                });
+            }
+        });
+
 
         //Save the data of the Upload information
-        userID = fAuth.getCurrentUser().getUid();
+       /* userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fstore.collection("Users").document(userID).collection("Uploads").document();
         Map<String, Object> user = new HashMap<>();
         user.put("Artist", Artist);
         user.put("Title",Title );
         user.put("Description",Description );
         user.put("Price",Price );
-        user.put("ArtImage",ImageUri.toString() );
-
-        documentReference.set(user, SetOptions.merge());
+        user.put("ArtImage",ImageUri.toString());
+        documentReference.set(user, SetOptions.merge());*/
     }
 
     //select image
