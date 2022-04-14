@@ -82,7 +82,7 @@
         android:orientation="horizontal">
 
 
-        <CheckBox
+        <!--<CheckBox
             android:id="@+id/Artist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
             android:text="Register as Customer"
             android:textColor="@color/white"
             android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textStyle="bold" />-->
 
     </LinearLayout>
 

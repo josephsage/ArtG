@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Upload">
+
     <ImageView
         android:id="@+id/imageUpload"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_launcher_background"
+        android:layout_height="230dp"
         android:layout_centerHorizontal="true"
-        />
+        android:src="@drawable/ic_launcher_background" />
     <Button
         android:id="@+id/uploadbutton"
         android:layout_width="wrap_content"
@@ -38,11 +38,30 @@
         android:paddingStart="12dp"
         android:padding="10dp"
         />
+
+    <EditText
+        android:id="@+id/contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/creator"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/custom_input"
+        android:hint="Phone Number"
+        android:inputType="number"
+        android:padding="10dp"
+        android:paddingStart="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="#918B8B"
+        android:textStyle="bold" />
     <EditText
         android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+        android:layout_below="@+id/price"
         android:hint="Description"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_input"
@@ -62,7 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Title "
-        android:layout_below="@+id/creator"
+        android:layout_below="@+id/contact"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_input"
         android:textColor="@color/black"
@@ -81,7 +100,7 @@
         android:layout_height="wrap_content"
         android:hint="Price"
         android:inputType="number"
-        android:layout_below="@+id/description"
+        android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_input"
         android:textColor="@color/black"
@@ -97,7 +116,7 @@
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/price"
+        android:layout_below="@+id/description"
         android:id="@+id/spin1"
         android:layout_marginLeft="15dp"
         />

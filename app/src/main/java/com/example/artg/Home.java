@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
-    ImageView imagelogout,imageupload;
+    ImageView imagelogout,imageupload, imagereport;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +20,7 @@ public class Home extends AppCompatActivity {
 
         imagelogout = (ImageView) findViewById(R.id.imageLogout);
         imageupload = (ImageView) findViewById(R.id.imageUpload);
+        imagereport = (ImageView) findViewById(R.id.report);
         imagelogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +33,14 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(),Upload.class));
+            }
+        });
+        imagereport = (ImageView) findViewById(R.id.report);
+
+        imagereport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Report.class));
             }
         });
     }

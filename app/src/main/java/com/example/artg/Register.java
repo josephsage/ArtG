@@ -59,8 +59,8 @@ public class Register extends AppCompatActivity {
         name = findViewById(R.id.REG_name);
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
-        artist = findViewById(R.id.Artist);
-        customer = findViewById(R.id.Customer);
+        //artist = findViewById(R.id.Artist);
+        //customer = findViewById(R.id.Customer);
 
 
         if (fAuth.getCurrentUser() != null) {
@@ -69,7 +69,7 @@ public class Register extends AppCompatActivity {
         }
 
         //Check box logic
-        artist.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        /*artist.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(compoundButton.isChecked()){
@@ -84,7 +84,7 @@ public class Register extends AppCompatActivity {
                     artist.setChecked(false);
                 }
             }
-        });
+        });*/
 
         register_btn.setOnClickListener((v) -> {
             final String mail = email.getText().toString().trim();
@@ -92,10 +92,10 @@ public class Register extends AppCompatActivity {
             final String fname = name.getText().toString().trim();
 
             //Checkbox Validation
-            if(!(artist.isChecked() || customer.isChecked() )) {
+            /*if(!(artist.isChecked() || customer.isChecked() )) {
                 Toast.makeText(Register.this, "Select the account type", Toast.LENGTH_SHORT).show();
                 return;
-            }
+            }*/
 
             if (TextUtils.isEmpty(mail)) {
                 email.setError("Email is Required");
@@ -121,14 +121,15 @@ public class Register extends AppCompatActivity {
                     Map<String, Object> user = new HashMap<>();
                     user.put("Fullname", fname);
                     user.put("Email", mail);
+                    user.put("Customer", "1");
 
-                    //specify if user is Artist or Customer
-                    if (artist.isChecked()){
+                    //specify if user is Artist or Customer.
+                    /*if (artist.isChecked()){
                         user.put("Artist", "1");
                     }
                     if (customer.isChecked()) {
                         user.put("Customer", "1");
-                    }
+                    }*/
 
 
                     documentReference.set(user);

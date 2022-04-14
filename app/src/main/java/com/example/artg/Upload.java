@@ -43,10 +43,10 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
     private Spinner spinner;
     Button uploadbtn;
     ImageView imageuploadview;
-    EditText artist, title, description_edt, price_edt;
+    EditText artist, title, description_edt, price_edt, phone;
     private  static final int GallerPick = 1;
     private Uri ImageUri;
-    private String Arttype,Artist,Title,Description,Price,savecurrentdate,savecurrenttime,userID;
+    private String Arttype,Artist,Title,Description,Price,savecurrentdate,savecurrenttime,userID, Phone;
     private String productRandomKey;
     private StorageReference productImageRef;
     private FirebaseFirestore fstore;
@@ -68,6 +68,7 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
         imageuploadview = findViewById(R.id.imageUpload);
         artist = findViewById(R.id.creator);
         title = findViewById(R.id.name);
+        phone = findViewById(R.id.contact);
         description_edt = findViewById(R.id.description);
         price_edt = findViewById(R.id.price);
         fAuth = FirebaseAuth.getInstance();
@@ -100,6 +101,7 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
         Price = price_edt.getText().toString();
         Title = title.getText().toString();
         Artist = artist.getText().toString();
+        Phone = phone.getText().toString();
 
         if (ImageUri == null)
         {
@@ -148,9 +150,10 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
                     public void onSuccess(Uri uri) {
                         ImageUri = uri;
                         userID = fAuth.getCurrentUser().getUid();
-                        DocumentReference documentReference = fstore.collection("Users").document(userID).collection("Uploads").document();
+                        DocumentReference documentReference = fstore.collection("Uploads").document("MRWwQYNF7tNRuxXIMMtIZSW15EC3").collection("Uploads").document();
                         Map<String, Object> user = new HashMap<>();
                         user.put("Artist", Artist);
+                        user.put("Phone", Phone);
                         user.put("Title",Title );
                         user.put("Description",Description );
                         user.put("Price",Price );
