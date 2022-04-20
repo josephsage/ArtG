@@ -30,14 +30,15 @@
         android:layout_below="@+id/detailimage"
         android:text="Artist "
         android:textStyle="bold"/>
+
     <TextView
         android:id="@+id/viewPrice"
-        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/viewdesc"
         android:text="Price"
-        android:textStyle="bold"/>
+        android:textSize="20dp"
+        android:textStyle="bold" />
     <TextView
         android:id="@+id/viewPhone"
         android:textSize="20dp"
@@ -47,20 +48,19 @@
         android:text="Phone"
         android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/cartbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/viewPhone"
-            android:text="Add To Cart"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/custom_button"
-            />
+    <!-- <Button
+        android:id="@+id/cartbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPhone"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/custom_button"
+        android:text="Add To Cart" /> -->
     <Button
         android:id="@+id/buybtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cartbtn"
+        android:layout_below="@+id/viewPhone"
         android:text="Buy Now"
         android:layout_centerHorizontal="true"
         android:background="@drawable/custom_button"

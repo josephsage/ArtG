@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+  <ImageView
+      android:layout_width="200dp"
+      android:layout_height="200dp"
+    android:id="@+id/buyimage"/>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+    android:id="@+id/pricebuy"
+    android:text="Price"
+      android:layout_toRightOf="@+id/buyimage"
+      android:layout_marginLeft="10dp"/>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/Titlebuy"
+      android:text="Title"
+      android:layout_toRightOf="@+id/buyimage"
+      android:layout_below="@+id/pricebuy"
+      android:layout_marginLeft="10dp"/>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/priceobuy"
+      android:text="Title"
+      android:layout_toRightOf="@+id/buyimage"
+      android:layout_below="@+id/Titlebuy"
+      android:layout_marginLeft="10dp"/>
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/detailtext"
+      android:text="Please use MTN mobile money number "
+     android:layout_below="@+id/buyimage"/>
+
+
+
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Phone number"
+      android:id="@+id/number"
+      android:inputType="number"
+      android:layout_below="@+id/detailtext"
+
+      />
+
+  <Button
+      android:id="@+id/mtnpayment"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/number"
+      android:text="Submit" />
+
+</RelativeLayout>

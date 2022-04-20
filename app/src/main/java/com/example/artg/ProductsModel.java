@@ -9,19 +9,21 @@ public class ProductsModel implements Serializable {
     private String Description;
     private String Artist;
     private String Phone;
+    private String Price;
 
     private ProductsModel(){
 
     }
 
     ProductsModel(String Title,String ArtImage,String Description,
-                  String Artist, String Phone) {
+                  String Artist, String Phone, String Price) {
 
         this.Title = Title;
         this.ArtImage = ArtImage;
         this.Description = Description;
         this.Artist = Artist;
         this.Phone = Phone;
+        this.Price = Price;
     }
 
     public String getTitle() {
@@ -62,6 +64,14 @@ public class ProductsModel implements Serializable {
 
     public void setPhone(String phone) {
         Phone = phone;
+    }
+
+    public String getPrice() {
+        return Price;
+    }
+
+    public void setPrice(String price) {
+        Price = price;
     }
 
     // public String getDescription(){return Description;}

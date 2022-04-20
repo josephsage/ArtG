@@ -1,46 +1,28 @@
 package com.example.artg;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
-
-import io.grpc.Context;
 
 public class prevelant extends AppCompatActivity {
 
@@ -73,7 +55,7 @@ public class prevelant extends AppCompatActivity {
                     case R.id.home:
                         return;
                     case R.id.Cart:
-                        startActivity(new Intent(getApplicationContext(),Cart.class));
+                        startActivity(new Intent(getApplicationContext(), Checkout.class));
                         overridePendingTransition(0,0);
                         return;
                 }
@@ -108,6 +90,7 @@ public class prevelant extends AppCompatActivity {
                    public void onClick(View view) {
                        Intent intent = new Intent(prevelant.this, ViewdetailActivity.class);
                        intent.putExtra("detail", finalModel);
+                       intent.putExtra("check", finalModel);
                        prevelant.this.startActivity(intent);
                    }
                });

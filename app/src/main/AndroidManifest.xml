@@ -19,7 +19,7 @@
             android:name=".Report"
             android:exported="true" />
         <activity
-            android:name=".Cart"
+            android:name=".Checkout"
             android:exported="true" />
         <activity
             android:name=".profile"
