@@ -21,7 +21,14 @@ public class requesttopay extends gettoken {
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n  \"amount\": \"5.0\",\n  \"currency\": \"EUR\",\n  \"externalId\": \"6353636\",\n  \"payer\": {\n    \"partyIdType\": \"MSISDN\",\n    \"partyId\": \"0248888736\"\n  },\n  \"payerMessage\": \"Pay for product a\",\n  \"payeeNote\": \"payer note\"\n}");
+        RequestBody body =
+                RequestBody.create(mediaType,
+                        "{\n  \"amount\": \"5.0\",\n " +
+                " \"currency\": \"EUR\",\n  " +
+                "\"externalId\": \"6353636\",\n  \"payer\":" +
+                " {\n    \"partyIdType\": \"MSISDN\",\n   " +
+                " \"partyId\": \"0248888736\"\n  },\n  \"payerMessage\": \"Pay for product a\",\n  " +
+                "\"payeeNote\": \"payer note\"\n}");
         Request request = new Request.Builder()
                 .url("https://sandbox.momodeveloper.mtn.com/collection/v1_0/requesttopay")
                 .method("POST", body)

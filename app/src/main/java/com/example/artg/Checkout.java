@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import org.json.JSONException;
 
@@ -106,14 +107,15 @@ public class Checkout extends AppCompatActivity {
         String price = getIntent().getStringExtra("price");
         purchases = new ArrayList<>();
         userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fstore.collection("User").document(userID);
+        DocumentReference documentReference = fstore.collection("Users").document(userID);
         Map<String, Object> user = new  HashMap<>();
+        //for(int i = 0; i< purchases.size(); i++) {
+            user.put("Purchases", FieldValue.arrayUnion(artist, phone, price));
+            //user.put("Purchases", Arrays.asList(phone));
+            //user.put("Purchases", Arrays.asList(price));
+            //user.put("Email", mail);
+            documentReference.update(user);
+        Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
 
-        user.put("Purchases", FieldValue.arrayUnion(artist, phone, price));
-        //user.put("Purchases", Arrays.asList(phone));
-        //user.put("Purchases", Arrays.asList(price));
-        //user.put("Email", mail);
-        documentReference.update(user);
-
+        }
     }
-}
