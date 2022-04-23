@@ -15,26 +15,43 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.artg.mtn.checkrtp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Checkout extends AppCompatActivity {
     ProductsModel productsModel;
     TextView Artist, title, Price;
     ImageView imagechk;
-    Button buy;
+    Button buy, purchase;
+    private FirebaseFirestore fstore;
+    private FirebaseAuth fAuth;
+    private String userID;
+    private ArrayList<ProductsModel> purchases = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
+
+
         title = findViewById(R.id.Titlebuy);
+        fAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
         Artist = findViewById(R.id.pricebuy);
         imagechk = findViewById(R.id.buyimage);
         buy = findViewById(R.id.mtnpayment);
+        purchase = findViewById(R.id.PURCHASE);
         Price = findViewById(R.id.priceobuy);
         Intent intent = getIntent();
 
@@ -46,14 +63,17 @@ public class Checkout extends AppCompatActivity {
         Price.setText(price);
         Glide.with(getApplicationContext()).load(intent.getStringExtra("image")).into(imagechk);
 
+        purchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                purchasearray();
+            }
+        });
 
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-                // final gettoken gt = new gettoken();
-                //final requesttopay rp = new requesttopay();
                 final checkrtp ckrtp = new checkrtp();
 
                 new AsyncTask() {
@@ -77,6 +97,23 @@ public class Checkout extends AppCompatActivity {
 
 
 
-           // Glide.with(getApplicationContext()).load(productsModel.getArtImage()).error(R.drawable.loco).into(imagechk);
-        }
+
     }
+
+    private void purchasearray() {
+        String phone = getIntent().getStringExtra("check");
+        String artist = getIntent().getStringExtra("artist");
+        String price = getIntent().getStringExtra("price");
+        purchases = new ArrayList<>();
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fstore.collection("User").document(userID);
+        Map<String, Object> user = new  HashMap<>();
+
+        user.put("Purchases", FieldValue.arrayUnion(artist, phone, price));
+        //user.put("Purchases", Arrays.asList(phone));
+        //user.put("Purchases", Arrays.asList(price));
+        //user.put("Email", mail);
+        documentReference.update(user);
+
+    }
+}
