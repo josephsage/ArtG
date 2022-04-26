@@ -9,11 +9,12 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class checkrtp extends requesttopay{
+public class checkrtp extends RequesttoPay {
     private static gettoken gt;
-    private static requesttopay rtp;
+    private static RequesttoPay rtp;
 
     public static JSONObject checkpaymnt() throws IOException, JSONException {
+
 
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -32,11 +33,15 @@ public class checkrtp extends requesttopay{
         //String token = object.getString("access_token");
         //String token_type = object.getString("token_type");
         //String expire_in = object.getString("expires_in");
+        String transactionid = object3.getString("financialTransactionId");
+       // Intent intent = new Intent(, Checkout.class);
+      // intent.putExtra("trans",transactionid);
 
         String status2 = String.valueOf(response.code());
         //System.out.println("---Token is----" +token +"-------");
         //System.out.println("---Token type:----" +token_type +"-------");
         //System.out.println("---Expires in:----" +expire_in +"-------");
+        System.out.println("---financialTransactionId:----" +transactionid +"-------");
         System.out.println("---Status 2----" +status2 +"-------");
         System.out.println("---object----" +object3 +"-------");
 

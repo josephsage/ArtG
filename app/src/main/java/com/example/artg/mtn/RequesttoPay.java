@@ -13,7 +13,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class requesttopay extends gettoken {
+public class RequesttoPay extends gettoken {
     private static gettoken gt = new gettoken();
     public static String uniqueID = UUID.randomUUID().toString();
 
@@ -45,12 +45,12 @@ public class requesttopay extends gettoken {
         JSONObject object = new JSONObject(resp2);
         //String token = object.getString("access_token");
         //String token_type = object.getString("token_type");
-        //String expire_in = object.getString("expires_in");
+        //String transactionid = object.getString("financialTransactionId");
 
         String status2 = String.valueOf(response.code());
         //System.out.println("---Token is----" +token +"-------");
         //System.out.println("---Token type:----" +token_type +"-------");
-        //System.out.println("---Expires in:----" +expire_in +"-------");
+        //System.out.println("---financialTransactionId:----" +transactionid +"-------");
         System.out.println("---Status 2----" +status2 +"-------");
         System.out.println("---UUID----" +uniqueID +"-------");
 

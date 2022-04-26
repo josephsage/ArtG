@@ -12,14 +12,14 @@
         android:layout_height="230dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_launcher_background" />
+
     <Button
         android:id="@+id/uploadbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Product"
-        android:layout_below="@+id/spin1"
+        android:layout_below="@+id/description"
         android:layout_centerHorizontal="true"
-        />
+        android:text="Add Product" />
     <EditText
         android:id="@+id/creator"
         android:layout_width="match_parent"
@@ -113,13 +113,13 @@
         android:textStyle="bold"
         android:paddingStart="12dp"
         android:padding="10dp"/>
-    <Spinner
+
+   <!-- <Spinner
+        android:id="@+id/spin1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/description"
-        android:id="@+id/spin1"
-        android:layout_marginLeft="15dp"
-        />
+        android:layout_marginLeft="15dp" /> -->
 
 
 </RelativeLayout>

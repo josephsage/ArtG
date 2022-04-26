@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.artg.mtn.RequesttoPay;
 import com.example.artg.mtn.checkrtp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -45,7 +46,6 @@ public class Checkout extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
 
 
-
         title = findViewById(R.id.Titlebuy);
         fAuth = FirebaseAuth.getInstance();
         fstore = FirebaseFirestore.getInstance();
@@ -64,16 +64,21 @@ public class Checkout extends AppCompatActivity {
         Price.setText(price);
         Glide.with(getApplicationContext()).load(intent.getStringExtra("image")).into(imagechk);
 
-        purchase.setOnClickListener(new View.OnClickListener() {
+      /*  purchase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 purchasearray();
             }
-        });
+        });*/
 
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String phone = getIntent().getStringExtra("check");
+                String artist = getIntent().getStringExtra("artist");
+                String price = getIntent().getStringExtra("price");
+
+
 
                 final checkrtp ckrtp = new checkrtp();
 
@@ -84,38 +89,62 @@ public class Checkout extends AppCompatActivity {
 
                         try {
                             ckrtp.checkpaymnt();
+                            String token = RequesttoPay.rtp();
+                            storeToDatabase(artist, phone, price, token);
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (JSONException e) {
+
                             e.printStackTrace();
                         }
                         return null;
                     }
+
                 }.execute();
                 Toast.makeText(Checkout.this, "Processing Transaction", Toast.LENGTH_SHORT).show();
             }
         });
 
 
-
-
     }
 
-    private void purchasearray() {
-        String phone = getIntent().getStringExtra("check");
-        String artist = getIntent().getStringExtra("artist");
-        String price = getIntent().getStringExtra("price");
+    private void storeToDatabase(String artist, String phone, String price, String token){
         purchases = new ArrayList<>();
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fstore.collection("Users").document(userID);
-        Map<String, Object> user = new  HashMap<>();
+        Map<String, Object> user = new HashMap<>();
         //for(int i = 0; i< purchases.size(); i++) {
+        HashMap<String, Object> purchaseDetails = new HashMap<>();
+        purchaseDetails.put("ArtistName", artist);
+        purchaseDetails.put("PhoneNumber", phone);
+        purchaseDetails.put("Price", price);
+        user.put("Purchases", FieldValue.arrayUnion(purchaseDetails));
+        //user.put("Purchases", Arrays.asList(phone));
+        //user.put("Purchases", Arrays.asList(price));
+        //user.put("Email", mail);
+        documentReference.update(user);
+        //Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
+
+    }
+
+  /*  private void purchasearray() {
+
+            String phone = getIntent().getStringExtra("check");
+            String artist = getIntent().getStringExtra("artist");
+            String price = getIntent().getStringExtra("price");
+
+            purchases = new ArrayList<>();
+            userID = fAuth.getCurrentUser().getUid();
+            DocumentReference documentReference = fstore.collection("Users").document(userID);
+            Map<String, Object> user = new HashMap<>();
+            //for(int i = 0; i< purchases.size(); i++) {
             user.put("Purchases", FieldValue.arrayUnion(artist, phone, price));
             //user.put("Purchases", Arrays.asList(phone));
             //user.put("Purchases", Arrays.asList(price));
             //user.put("Email", mail);
             documentReference.update(user);
-        Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
+            Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();*/
 
-        }
+
     }
+//}

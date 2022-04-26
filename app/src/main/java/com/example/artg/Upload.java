@@ -39,7 +39,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Upload extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class Upload extends AppCompatActivity {
     private Spinner spinner;
     Button uploadbtn;
     ImageView imageuploadview;
@@ -63,7 +63,7 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
 
         productImageRef= FirebaseStorage.getInstance().getReference().child("Product Images");
 
-        spinner = findViewById(R.id.spin1);
+       // spinner = findViewById(R.id.spin1);
         uploadbtn = findViewById(R.id.uploadbutton);
         imageuploadview = findViewById(R.id.imageUpload);
         artist = findViewById(R.id.creator);
@@ -76,7 +76,7 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
         //Spinner code
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ArtType, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+//        spinner.setAdapter(adapter);
         //select from gallery
         imageuploadview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +93,7 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
             }
         });
         //spinner listener
-        spinner.setOnItemSelectedListener(this);
+       // spinner.setOnItemSelectedListener(this);
     }
         //Art information for the upload
     private void validateproductdata() {
@@ -201,7 +201,7 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
         }
     }
 
-    @Override
+   /* @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String choice = adapterView.getItemAtPosition(i).toString();
         Toast.makeText(getApplicationContext(), choice, Toast.LENGTH_SHORT).show();
@@ -209,6 +209,6 @@ public class Upload extends AppCompatActivity implements AdapterView.OnItemSelec
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+*/
     }
-}
+
