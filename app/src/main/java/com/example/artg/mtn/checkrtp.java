@@ -33,15 +33,13 @@ public class checkrtp extends RequesttoPay {
         //String token = object.getString("access_token");
         //String token_type = object.getString("token_type");
         //String expire_in = object.getString("expires_in");
-        String transactionid = object3.getString("financialTransactionId");
-       // Intent intent = new Intent(, Checkout.class);
-      // intent.putExtra("trans",transactionid);
+        //String transactionid = object3.getString("financialTransactionId");
 
         String status2 = String.valueOf(response.code());
         //System.out.println("---Token is----" +token +"-------");
         //System.out.println("---Token type:----" +token_type +"-------");
         //System.out.println("---Expires in:----" +expire_in +"-------");
-        System.out.println("---financialTransactionId:----" +transactionid +"-------");
+        //System.out.println("---financialTransactionId:----" +transactionid +"-------");
         System.out.println("---Status 2----" +status2 +"-------");
         System.out.println("---object----" +object3 +"-------");
 

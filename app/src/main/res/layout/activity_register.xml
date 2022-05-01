@@ -106,21 +106,18 @@
     </LinearLayout>
 
 
-
-
     <Button
+        android:id="@+id/register_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/linear2"
-        android:layout_marginRight="40dp"
         android:layout_marginLeft="40dp"
-        android:id="@+id/register_btn"
-        android:padding="17dp"
-        android:textAllCaps="false"
+        android:layout_marginRight="40dp"
         android:background="@drawable/custom_button"
-        android:textSize="18sp"
+        android:padding="17dp"
         android:text="Create Account"
-        />
+        android:textAllCaps="false"
+        android:textSize="18sp" />
 
 
 

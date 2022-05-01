@@ -18,6 +18,7 @@ public class RequesttoPay extends gettoken {
     public static String uniqueID = UUID.randomUUID().toString();
 
     public static String rtp() throws IOException, JSONException {
+        //String price = get
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         MediaType mediaType = MediaType.parse("application/json");

@@ -16,6 +16,12 @@
         android:theme="@style/Theme.ARTG"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Complete"
+            android:exported="true" />
+        <activity
+            android:name=".Purchases"
+            android:exported="true" />
+        <activity
             android:name=".Report"
             android:exported="true" />
         <activity

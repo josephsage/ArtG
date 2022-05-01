@@ -88,9 +88,10 @@ public class Checkout extends AppCompatActivity {
                     protected Object doInBackground(Object[] objects) {
 
                         try {
+                            //String price = RequesttoPay.rtp();
                             ckrtp.checkpaymnt();
-                            String token = RequesttoPay.rtp();
-                            storeToDatabase(artist, phone, price, token);
+                            String transactionid = checkrtp.rtp();
+                            storeToDatabase(artist, phone, price, transactionid);
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (JSONException e) {
@@ -108,7 +109,7 @@ public class Checkout extends AppCompatActivity {
 
     }
 
-    private void storeToDatabase(String artist, String phone, String price, String token){
+    private void storeToDatabase(String artist, String phone, String price, String transactionid){
         purchases = new ArrayList<>();
         userID = fAuth.getCurrentUser().getUid();
         DocumentReference documentReference = fstore.collection("Users").document(userID);
@@ -118,12 +119,14 @@ public class Checkout extends AppCompatActivity {
         purchaseDetails.put("ArtistName", artist);
         purchaseDetails.put("PhoneNumber", phone);
         purchaseDetails.put("Price", price);
+        purchaseDetails.put("Transaction ID", transactionid);
         user.put("Purchases", FieldValue.arrayUnion(purchaseDetails));
         //user.put("Purchases", Arrays.asList(phone));
         //user.put("Purchases", Arrays.asList(price));
         //user.put("Email", mail);
         documentReference.update(user);
         //Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getApplicationContext(), Complete.class));
 
     }
 
