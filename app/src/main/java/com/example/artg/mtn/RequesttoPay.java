@@ -1,6 +1,8 @@
 package com.example.artg.mtn;
 
 
+import com.example.artg.ProductsModel;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,13 +20,12 @@ public class RequesttoPay extends gettoken {
     public static String uniqueID = UUID.randomUUID().toString();
 
     public static String rtp() throws IOException, JSONException {
-        //String price = get
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         MediaType mediaType = MediaType.parse("application/json");
         RequestBody body =
                 RequestBody.create(mediaType,
-                        "{\n  \"amount\": \"5.0\",\n " +
+                        "{\n  \"amount\":  \"5.0\",\n " +
                 " \"currency\": \"EUR\",\n  " +
                 "\"externalId\": \"6353636\",\n  \"payer\":" +
                 " {\n    \"partyIdType\": \"MSISDN\",\n   " +

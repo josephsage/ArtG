@@ -63,10 +63,10 @@ public class Register extends AppCompatActivity {
         //customer = findViewById(R.id.Customer);
 
 
-        if (fAuth.getCurrentUser() != null) {
+       /* if (fAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), Home.class));
             finish();
-        }
+        }*/
 
         //Check box logic
         /*artist.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

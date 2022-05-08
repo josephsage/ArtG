@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -28,6 +29,7 @@ public class prevelant extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     FirebaseFirestore db;
+    ImageView profileAccount;
     private FirebaseAuth fAuth;
     private String UserId;
     private FirestoreRecyclerAdapter adapter;
@@ -41,8 +43,16 @@ public class prevelant extends AppCompatActivity {
         setContentView(R.layout.activity_prevelant);
 
         recyclerView = findViewById(R.id.recyclerview);
+        profileAccount = findViewById(R.id.profileaccount);
         bottomNavigationView = findViewById(R.id.bottomnav);
         bottomNavigationView.setSelectedItemId(R.id.home);
+
+        profileAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(),Account.class));
+            }
+        });
 
         bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
@@ -113,7 +123,7 @@ public class prevelant extends AppCompatActivity {
             }
         };
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayout.HORIZONTAL, false));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));//(this, LinearLayout.VERTICAL, false));
         recyclerView.setAdapter(adapter);
 
     }

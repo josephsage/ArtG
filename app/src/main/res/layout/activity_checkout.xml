@@ -16,14 +16,15 @@
     android:text="Price"
       android:layout_toRightOf="@+id/buyimage"
       android:layout_marginLeft="10dp"/>
+
   <TextView
+      android:id="@+id/Titlebuy"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:id="@+id/Titlebuy"
-      android:text="Title"
-      android:layout_toRightOf="@+id/buyimage"
       android:layout_below="@+id/pricebuy"
-      android:layout_marginLeft="10dp"/>
+      android:layout_marginLeft="10dp"
+      android:layout_toRightOf="@+id/buyimage"
+      android:text="Title" />
 
   <TextView
       android:id="@+id/priceobuy"
@@ -41,15 +42,13 @@
      android:layout_below="@+id/buyimage"/>
 
 
-
-
   <EditText
+      android:id="@+id/number"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:hint="Phone number"
-      android:id="@+id/number"
-      android:inputType="number"
       android:layout_below="@+id/detailtext"
+      android:hint="Phone number"
+      android:inputType="number"
 
       />
 

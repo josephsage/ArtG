@@ -7,14 +7,14 @@
     android:background="@drawable/gradient_list"
     android:id="@+id/main_layout"
     >
+
     <ImageView
-        android:src="@drawable/loco"
+        android:id="@+id/img_logo"
         android:layout_width="200dp"
         android:layout_height="100dp"
-        android:id="@+id/img_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
-        />
+        android:src="@drawable/loco" />
 
 
     <EditText

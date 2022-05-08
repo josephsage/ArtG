@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ import java.util.Map;
 public class Checkout extends AppCompatActivity {
     ProductsModel productsModel;
     TextView Artist, title, Price;
+    EditText Pnumber;
     ImageView imagechk;
     Button buy, purchase;
     private FirebaseFirestore fstore;
@@ -54,6 +56,7 @@ public class Checkout extends AppCompatActivity {
         buy = findViewById(R.id.mtnpayment);
         purchase = findViewById(R.id.PURCHASE);
         Price = findViewById(R.id.priceobuy);
+        Pnumber = findViewById(R.id.number);
         Intent intent = getIntent();
 
         String phone = getIntent().getStringExtra("check");
@@ -74,6 +77,7 @@ public class Checkout extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               // String Mtn_number = Pnumber.getText().toString().trim();
                 String phone = getIntent().getStringExtra("check");
                 String artist = getIntent().getStringExtra("artist");
                 String price = getIntent().getStringExtra("price");
@@ -92,6 +96,7 @@ public class Checkout extends AppCompatActivity {
                             ckrtp.checkpaymnt();
                             String transactionid = checkrtp.rtp();
                             storeToDatabase(artist, phone, price, transactionid);
+                            store2(artist, price, phone, transactionid);
                         } catch (IOException e) {
                             e.printStackTrace();
                         } catch (JSONException e) {
@@ -126,8 +131,19 @@ public class Checkout extends AppCompatActivity {
         //user.put("Email", mail);
         documentReference.update(user);
         //Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(getApplicationContext(), Complete.class));
+        //7startActivity(new Intent(getApplicationContext(), Complete.class));
 
+
+    }
+    private void store2(String artist, String phone, String price, String transactionid){
+        userID = fAuth.getCurrentUser().getUid();
+        DocumentReference documentReference = fstore.collection("Purchases").document("Purchase1").collection("Purchased").document();
+        Map<String, Object> user = new HashMap<>();
+        user.put("ArtistName", artist);
+        user.put("PhoneNumber", phone);
+        user.put("Transaction ID",transactionid );
+        user.put("Price",price );
+        documentReference.set(user, SetOptions.merge());
     }
 
   /*  private void purchasearray() {
@@ -150,4 +166,6 @@ public class Checkout extends AppCompatActivity {
 
 
     }
+
+
 //}

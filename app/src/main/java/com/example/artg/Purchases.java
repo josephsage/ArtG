@@ -59,9 +59,9 @@ public class Purchases extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull ProductsModel model) {
-                holder.purchase.setText(model.getArtistName());
-                String url = model.getArtImage();
-                model.getArtImage();
+                holder.purchase.setText(model.getFullname());
+                //String url = model.getArtImage();
+                //model.getArtImage();
                 //Glide.with(Purchases.this).load(model.getArtImage()).error(R.drawable.loco).into(holder.productimage);
 
             }
