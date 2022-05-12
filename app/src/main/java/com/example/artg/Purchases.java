@@ -44,7 +44,7 @@ public class Purchases extends AppCompatActivity {
 
         recyclerView.setItemAnimator(null);
         db = FirebaseFirestore.getInstance();
-        Query query = db.collection("Users");
+        Query query = db.collection("Purchases").document("Purchase1" ).collection("Purchased");
 
         FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
                 .setQuery(query, ProductsModel.class)
@@ -59,7 +59,10 @@ public class Purchases extends AppCompatActivity {
 
             @Override
             public void onBindViewHolder(@NonNull ProductsViewHolder holder, int position, @NonNull ProductsModel model) {
-                holder.purchase.setText(model.getFullname());
+                holder.purchase.setText(model.getArtistName());
+                holder.transactionid.setText(model.getTransaction_ID());
+                holder.buyeremail.setText(model.getBuyerEmail());
+                holder.buyername.setText(model.getBuyerName());
                 //String url = model.getArtImage();
                 //model.getArtImage();
                 //Glide.with(Purchases.this).load(model.getArtImage()).error(R.drawable.loco).into(holder.productimage);
@@ -75,12 +78,19 @@ public class Purchases extends AppCompatActivity {
 
     private class ProductsViewHolder extends RecyclerView.ViewHolder {
         private TextView purchase;
+        private TextView transactionid;
+        private TextView buyeremail;
+        private TextView buyername;
         ProductsModel model;
 
 
         public ProductsViewHolder(@NonNull View itemView) {
             super(itemView);
             purchase = itemView.findViewById(R.id.purchase_artist);
+            transactionid = itemView.findViewById(R.id.transactionid);
+            buyeremail = itemView.findViewById(R.id.buyeremail);
+            buyername = itemView.findViewById(R.id.buyername);
+
 
         }
     }

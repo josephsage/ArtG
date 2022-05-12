@@ -92,8 +92,7 @@ public class Upload extends AppCompatActivity {
                 validateproductdata();
             }
         });
-        //spinner listener
-       // spinner.setOnItemSelectedListener(this);
+
     }
         //Art information for the upload
     private void validateproductdata() {
@@ -159,22 +158,12 @@ public class Upload extends AppCompatActivity {
                         user.put("Price",Price );
                         user.put("ArtImage",ImageUri.toString());
                         documentReference.set(user, SetOptions.merge());
+
+                        startActivity(new Intent(getApplicationContext(), Report.class));
                     }
                 });
             }
         });
-
-
-        //Save the data of the Upload information
-       /* userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fstore.collection("Users").document(userID).collection("Uploads").document();
-        Map<String, Object> user = new HashMap<>();
-        user.put("Artist", Artist);
-        user.put("Title",Title );
-        user.put("Description",Description );
-        user.put("Price",Price );
-        user.put("ArtImage",ImageUri.toString());
-        documentReference.set(user, SetOptions.merge());*/
     }
 
     //select image

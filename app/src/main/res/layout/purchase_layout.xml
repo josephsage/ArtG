@@ -17,9 +17,39 @@
             android:id="@+id/purchase_artist"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="Product Title"
+            android:text="artist"
             android:textAlignment="center"
-            android:background="@drawable/custom_button"
+
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/buyername"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="buyer"
+            android:textAlignment="center"
+
+            android:textSize="20dp"
+            android:layout_below="@+id/purchase_artist"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/buyeremail"
+            android:layout_below="@+id/buyername"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="buyer email"
+            android:textAlignment="center"
+
+            android:textSize="20dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/transactionid"
+            android:layout_below="@id/buyeremail"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="transaction id"
+            android:textAlignment="center"
+
             android:textSize="20dp"
             android:textStyle="bold" />
 

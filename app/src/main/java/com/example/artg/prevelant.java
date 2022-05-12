@@ -58,16 +58,16 @@ public class prevelant extends AppCompatActivity {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.Profile:
+                    case R.id.profile:
                         startActivity(new Intent(getApplicationContext(),profile.class));
                         overridePendingTransition(0,0);
                         return;
                     case R.id.home:
                         return;
-                    case R.id.Cart:
+                    /* case R.id.Cart:
                         startActivity(new Intent(getApplicationContext(), Checkout.class));
                         overridePendingTransition(0,0);
-                        return;
+                        return;*/
                 }
                 return;
 

@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottomnavpro"
-        app:itemBackground="@color/purple_500"
+        app:itemBackground="@color/black"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu"
         android:layout_alignParentBottom="true"

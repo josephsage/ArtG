@@ -17,8 +17,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.artg.mtn.RequesttoPay;
 import com.example.artg.mtn.checkrtp;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -74,77 +76,86 @@ public class Checkout extends AppCompatActivity {
             }
         });*/
 
+
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // String Mtn_number = Pnumber.getText().toString().trim();
+                // String Mtn_number = Pnumber.getText().toString().trim();
                 String phone = getIntent().getStringExtra("check");
                 String artist = getIntent().getStringExtra("artist");
                 String price = getIntent().getStringExtra("price");
-
-
-
-                final checkrtp ckrtp = new checkrtp();
-
-                new AsyncTask() {
-
+                userID = fAuth.getCurrentUser().getUid();
+                fstore.collection("Users").document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
-                    protected Object doInBackground(Object[] objects) {
+                    public void onSuccess(DocumentSnapshot snapshot) {
+                        String USER_NAME = snapshot.getString("Fullname");
+                        String email = snapshot.getString("Email");
 
-                        try {
-                            //String price = RequesttoPay.rtp();
-                            ckrtp.checkpaymnt();
-                            String transactionid = checkrtp.rtp();
-                            storeToDatabase(artist, phone, price, transactionid);
-                            store2(artist, price, phone, transactionid);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } catch (JSONException e) {
 
-                            e.printStackTrace();
-                        }
-                        return null;
+                        final checkrtp ckrtp = new checkrtp();
+
+                        new AsyncTask() {
+
+                            @Override
+                            protected Object doInBackground(Object[] objects) {
+
+                                try {
+                                    //String price = RequesttoPay.rtp();
+                                    ckrtp.checkpaymnt();
+                                    String transactionid = checkrtp.rtp();
+                                    storeToDatabase(artist, phone, price, transactionid);
+                                    store2(artist, price, phone,USER_NAME,email, transactionid);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                } catch (JSONException e) {
+
+                                    e.printStackTrace();
+                                }
+                                return null;
+                            }
+
+                        }.execute();
+                        Toast.makeText(Checkout.this, "Processing Transaction", Toast.LENGTH_SHORT).show();
                     }
+                });
 
-                }.execute();
-                Toast.makeText(Checkout.this, "Processing Transaction", Toast.LENGTH_SHORT).show();
+
             }
-        });
+
+            private void storeToDatabase(String artist, String phone, String price, String transactionid) {
+                purchases = new ArrayList<>();
+                userID = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fstore.collection("Users").document(userID);
+                Map<String, Object> user = new HashMap<>();
+                //for(int i = 0; i< purchases.size(); i++) {
+                HashMap<String, Object> purchaseDetails = new HashMap<>();
+                purchaseDetails.put("ArtistName", artist);
+                purchaseDetails.put("PhoneNumber", phone);
+                purchaseDetails.put("Price", price);
+                purchaseDetails.put("Transaction ID", transactionid);
+                user.put("Purchases", FieldValue.arrayUnion(purchaseDetails));
+                //user.put("Purchases", Arrays.asList(phone));
+                //user.put("Purchases", Arrays.asList(price));
+                //user.put("Email", mail);
+                documentReference.update(user);
+                //Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
+                //7startActivity(new Intent(getApplicationContext(), Complete.class));
 
 
-    }
+            }
 
-    private void storeToDatabase(String artist, String phone, String price, String transactionid){
-        purchases = new ArrayList<>();
-        userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fstore.collection("Users").document(userID);
-        Map<String, Object> user = new HashMap<>();
-        //for(int i = 0; i< purchases.size(); i++) {
-        HashMap<String, Object> purchaseDetails = new HashMap<>();
-        purchaseDetails.put("ArtistName", artist);
-        purchaseDetails.put("PhoneNumber", phone);
-        purchaseDetails.put("Price", price);
-        purchaseDetails.put("Transaction ID", transactionid);
-        user.put("Purchases", FieldValue.arrayUnion(purchaseDetails));
-        //user.put("Purchases", Arrays.asList(phone));
-        //user.put("Purchases", Arrays.asList(price));
-        //user.put("Email", mail);
-        documentReference.update(user);
-        //Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
-        //7startActivity(new Intent(getApplicationContext(), Complete.class));
-
-
-    }
-    private void store2(String artist, String phone, String price, String transactionid){
-        userID = fAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = fstore.collection("Purchases").document("Purchase1").collection("Purchased").document();
-        Map<String, Object> user = new HashMap<>();
-        user.put("ArtistName", artist);
-        user.put("PhoneNumber", phone);
-        user.put("Transaction ID",transactionid );
-        user.put("Price",price );
-        documentReference.set(user, SetOptions.merge());
-    }
+            private void store2(String artist, String phone, String price,String USER_NAME, String email,  String transactionid) {
+                userID = fAuth.getCurrentUser().getUid();
+                DocumentReference documentReference = fstore.collection("Purchases").document("Purchase1").collection("Purchased").document();
+                Map<String, Object> user = new HashMap<>();
+                user.put("BuyerName", USER_NAME);
+                user.put("BuyerEmail", email);
+                user.put("ArtistName", artist);
+                user.put("PhoneNumber", phone);
+                user.put("Transaction_ID", transactionid);
+                user.put("Price", price);
+                documentReference.set(user, SetOptions.merge());
+            }
 
   /*  private void purchasearray() {
 
@@ -165,7 +176,9 @@ public class Checkout extends AppCompatActivity {
             Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();*/
 
 
+        });
     }
+}
 
 
 //}
