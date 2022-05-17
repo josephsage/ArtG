@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="20dp"
@@ -9,34 +9,61 @@
     app:cardElevation="15dp"
     android:background="@drawable/custom_button">
     <RelativeLayout
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Artist :"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/purchase_artist"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="artist"
+            android:text="Seller"
+            android:paddingLeft="50dp"
             android:textAlignment="center"
-
             android:textSize="20dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Buyer :"
+            android:textSize="20dp"
+            android:layout_below="@+id/purchase_artist"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/buyername"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/purchase_artist"
+            android:paddingLeft="50dp"
             android:text="buyer"
             android:textAlignment="center"
-
             android:textSize="20dp"
-            android:layout_below="@+id/purchase_artist"
             android:textStyle="bold" />
+
         <TextView
-            android:id="@+id/buyeremail"
-            android:layout_below="@+id/buyername"
+            android:id="@+id/three"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/buyername"
+            android:text="e-mail :"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/buyeremail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buyername"
+
             android:text="buyer email"
             android:textAlignment="center"
 

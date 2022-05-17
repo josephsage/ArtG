@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -80,7 +81,7 @@ public class Checkout extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // String Mtn_number = Pnumber.getText().toString().trim();
+                String Mtn_number = Pnumber.getText().toString().trim();
                 String phone = getIntent().getStringExtra("check");
                 String artist = getIntent().getStringExtra("artist");
                 String price = getIntent().getStringExtra("price");
@@ -90,6 +91,12 @@ public class Checkout extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot snapshot) {
                         String USER_NAME = snapshot.getString("Fullname");
                         String email = snapshot.getString("Email");
+
+                        if (TextUtils.isEmpty(Mtn_number)) {
+                            Pnumber.setError("Please input MTN Number");
+                            return;
+
+                        }
 
 
                         final checkrtp ckrtp = new checkrtp();

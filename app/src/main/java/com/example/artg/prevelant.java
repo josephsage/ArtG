@@ -9,10 +9,14 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,6 +38,7 @@ public class prevelant extends AppCompatActivity {
     private String UserId;
     private FirestoreRecyclerAdapter adapter;
     BottomNavigationView bottomNavigationView;
+    private static final String TAG = "firestoreSearchActivity";
 
 
     @SuppressLint("WrongConstant")
@@ -80,6 +85,41 @@ public class prevelant extends AppCompatActivity {
         FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
                 .setQuery(query, ProductsModel.class)
                 .build();
+
+        EditText searchbox = findViewById(R.id.searchbox);
+        searchbox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Log.d(TAG, "searchbox has changed to: " + editable.toString());
+                Query query;
+                if(editable.toString().isEmpty()){
+                    query = db.collection("Uploads")
+                            .document("MRWwQYNF7tNRuxXIMMtIZSW15EC3" )
+                            .collection("Uploads");
+
+                }else {
+                    query = db.collection("Uploads")
+                            .document("MRWwQYNF7tNRuxXIMMtIZSW15EC3")
+                            .collection("Uploads")
+                            .whereEqualTo("Title", editable.toString());
+                    
+                }
+                FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
+                        .setQuery(query, ProductsModel.class)
+                        .build();
+                adapter.updateOptions(options);
+            }
+        });
         adapter = new FirestoreRecyclerAdapter<ProductsModel, ProductsViewHolder>(options) {
             @NonNull
             @Override

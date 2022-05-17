@@ -9,13 +9,14 @@
       android:layout_width="200dp"
       android:layout_height="200dp"
     android:id="@+id/buyimage"/>
+
   <TextView
+      android:id="@+id/pricebuy"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-    android:id="@+id/pricebuy"
-    android:text="Price"
+      android:layout_marginLeft="10dp"
       android:layout_toRightOf="@+id/buyimage"
-      android:layout_marginLeft="10dp"/>
+      android:text="Price" />
 
   <TextView
       android:id="@+id/Titlebuy"
