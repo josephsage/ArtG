@@ -56,7 +56,7 @@ public class RequesttoPay extends gettoken {
         System.out.println("---Status 2----" +status2 +"-------");
         System.out.println("---UUID----" +uniqueID +"-------");
 
-        System.out.println(response);
+        //System.out.println(response);
 
         return uniqueID;
     }

@@ -34,25 +34,26 @@
         android:layout_below="@id/REG_logo"
         android:background="@drawable/custom_input"
         android:hint="Name" />
+
     <EditText
-        android:layout_marginBottom="12dp"
-        android:layout_marginTop="12dp"
         android:id="@+id/REG_email"
-        android:drawablePadding="12dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/REG_name"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"
         android:layout_marginRight="15dp"
-        android:inputType="text"
+        android:layout_marginBottom="12dp"
         android:background="@drawable/custom_input"
         android:drawableStart="@drawable/ic_baseline_email"
+        android:drawablePadding="12dp"
+        android:hint="E-mail Address"
+        android:inputType="text"
         android:textColor="@color/black"
-        android:textColorHint="#918B8B"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/REG_name"
 
 
-        android:hint="E-mail Address" />
+        android:textColorHint="#918B8B" />
 
     <EditText
         android:id="@+id/REG_password"

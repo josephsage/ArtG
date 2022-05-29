@@ -50,6 +50,7 @@ public class profile extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
 }

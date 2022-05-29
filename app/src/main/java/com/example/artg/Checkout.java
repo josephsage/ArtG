@@ -146,7 +146,7 @@ public class Checkout extends AppCompatActivity {
                 //user.put("Email", mail);
                 documentReference.update(user);
                 //Toast.makeText(Checkout.this, "Item purchased.", Toast.LENGTH_LONG).show();
-                //7startActivity(new Intent(getApplicationContext(), Complete.class));
+                //startActivity(new Intent(getApplicationContext(), Complete.class));
 
 
             }
@@ -162,6 +162,7 @@ public class Checkout extends AppCompatActivity {
                 user.put("Transaction_ID", transactionid);
                 user.put("Price", price);
                 documentReference.set(user, SetOptions.merge());
+
             }
 
   /*  private void purchasearray() {

@@ -26,5 +26,6 @@ public class Complete extends AppCompatActivity {
                 finish();
             }
         });
+        finish();
     }
 }

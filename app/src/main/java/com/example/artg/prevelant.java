@@ -111,8 +111,9 @@ public class prevelant extends AppCompatActivity {
                     query = db.collection("Uploads")
                             .document("MRWwQYNF7tNRuxXIMMtIZSW15EC3")
                             .collection("Uploads")
-                            .whereEqualTo("Title", editable.toString());
-                    
+                            .whereEqualTo("Artist", editable.toString());
+
+
                 }
                 FirestoreRecyclerOptions<ProductsModel> options = new FirestoreRecyclerOptions.Builder<ProductsModel>()
                         .setQuery(query, ProductsModel.class)

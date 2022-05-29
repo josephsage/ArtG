@@ -134,7 +134,7 @@ public class Report extends AppCompatActivity {
             super(itemView);
             productreport = itemView.findViewById(R.id.product_report);
             imagereport = itemView.findViewById(R.id.image_report);
-            mDeleteproduct = itemView.findViewById(R.id.product_delete);
+            //mDeleteproduct = itemView.findViewById(R.id.product_delete);
         }
 
         public void deleteitem() {

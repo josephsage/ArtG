@@ -16,6 +16,9 @@
         android:theme="@style/Theme.ARTG"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Registered"
+            android:exported="true" />
+        <activity
             android:name=".Account"
             android:exported="true" />
         <activity

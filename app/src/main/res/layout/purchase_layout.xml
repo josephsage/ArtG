@@ -14,7 +14,7 @@
         android:background="@color/black">
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Artist :"
             android:textSize="20dp"
@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/purchase_artist"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Seller"
             android:paddingLeft="50dp"
@@ -31,7 +31,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Buyer :"
             android:textSize="20dp"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/buyername"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/purchase_artist"
             android:paddingLeft="50dp"
@@ -51,7 +51,7 @@
 
         <TextView
             android:id="@+id/three"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/buyername"
             android:text="e-mail :"
@@ -70,13 +70,22 @@
             android:textSize="20dp"
             android:textStyle="bold" />
         <TextView
+            android:id="@+id/four"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/buyeremail"
+            android:text="ID :"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+        <TextView
             android:id="@+id/transactionid"
             android:layout_below="@id/buyeremail"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="transaction id"
             android:textAlignment="center"
-
             android:textSize="20dp"
             android:textStyle="bold" />
 

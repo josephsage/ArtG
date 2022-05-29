@@ -11,28 +11,79 @@
         android:layout_height="100dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:src="@drawable/ic_profile" />
+        android:src="@drawable/loco" />
 
-    <TextView
+    <EditText
         android:id="@+id/txt_account"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_account"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
-        android:text="name"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:drawableLeft="@drawable/ic_profile"
+        android:drawablePadding="12dp"
+        android:hint="Full names"
         android:textSize="30dp"
         android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/txt_account2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_account"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
-        android:text="name"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:drawableLeft="@drawable/ic_baseline_email"
+        android:drawablePadding="12dp"
+        android:hint="Email"
         android:textSize="30dp"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txt_account3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_account2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:drawableLeft="@drawable/ic_phone"
+        android:drawablePadding="12dp"
+       android:hint="Phone number"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/txt_account4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_account3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:drawableLeft="@drawable/ic_baseline_add_location"
+        android:drawablePadding="12dp"
+       android:hint="Location"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+    <Button
+        android:id="@+id/account_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_account4"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="12dp"
+        android:padding="10dp"
+        android:text="Update"
+        android:textAllCaps="false"
+        android:background="@drawable/custom_button"
+        android:textSize="18sp" />
+
 
 </RelativeLayout>
